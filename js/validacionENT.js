@@ -44,10 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
 });
-// Coordenadas de referencia (Universidad del Rosario)
+// Coordenadas de referencia (Universidad del Rosario) parqueadero en el caso actual
 const latA = 4.601025504132103;
 const lngA = -74.07303884639771;
-const rangoMaximo = 0.01; // 10 metros = 0.01 km
+const rangoMaximo = 100000; // 10 metros = 0.01 km
 
 // Función para calcular la distancia entre dos coordenadas (en km)
 function calcularDistancia(lat1, lon1, lat2, lon2) {
@@ -96,7 +96,7 @@ function realizarAccion(ubicacionValida) {
     if (ubicacionValida) {
         // Si está dentro del rango, registrar la entrada o redirigir
         alert("Registrando entrada...");
-        window.location.href = "pagina_de_exito.html"; // Cambia esta URL según lo necesario
+        window.location.href = "PaginaPri.html"; // Cambia esta URL según lo necesario
     } else {
         // Si está fuera del rango, mostrar un error
         alert("Por favor, acércate a el parqueadero y vuelve a intentarlo.");
@@ -125,3 +125,11 @@ function verificarUbicacion() {
     obtenerUbicacion(); // Llama a la función para obtener la ubicación
 } 
 
+
+function eliminarFila(boton) {
+    // Obtener la fila completa (el <tr>) en la que está el botón
+    var fila = boton.closest('tr');
+    
+    // Eliminar la fila de la tabla
+    fila.remove();
+}
