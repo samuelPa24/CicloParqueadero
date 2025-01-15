@@ -10,15 +10,36 @@ document.getElementById("registrar").addEventListener("click", function(event) {
 
     // Validación simple
     if (nombre === "" || apellido === "" || correo === "" || celular === "") {
-        alert("Por favor, complete todos los campos.");
-        return;
+        Swal.fire({
+            title: '¡Error!',
+            text: 'No puede haber campos vacíos.',
+            icon: 'error',
+            timer: 3000,
+            timerProgressBar: true,
+        });
     }
 
-    if (!autorizo) {
-        alert("Debe autorizar los términos y condiciones.");
+    else if (!autorizo){ 
+        Swal.fire({
+            title: '¡Error!',
+            text: 'Debes aceptar los terminos y condiciones!',
+            icon: 'error',
+            timer: 3000,
+            timerProgressBar: true,
+        });
         return;
     }
-
-    // Si la validación es exitosa, redirigir a PaginaPri.html
-    window.location.href = "PaginaPri.html";
+    
+    else {(autorizo) 
+        Swal.fire({
+            title: '¡Registro exitoso!',
+            text: 'Gracias por registrarte.',
+            icon: 'success',
+            timer: 3000,
+            timerProgressBar: true,
+            willClose: () => {
+                window.location.href = 'PaginaPri.html'; 
+            }
+        });       
+    }
 });
